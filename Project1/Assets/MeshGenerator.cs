@@ -13,6 +13,7 @@ public class MeshGenerator : MonoBehaviour
     public int xSize = 20;
     public int zSize = 20;
 
+    //offset of the height.
     public float mHeight;
 
     void Start()
@@ -66,6 +67,7 @@ public class MeshGenerator : MonoBehaviour
         //vertices[vertices.Length - 1].y = UnityEngine.Random.Range(-mHeight, mHeight);
         //vertices[vertices.Length - 1 - xSize].y = UnityEngine.Random.Range(-mHeight, mHeight);
 
+        //initial the height values for four vertexes of the origin square.
         vertices[0].y = 5;
         vertices[xSize].y = 5;
         vertices[vertices.Length - 1].y = 5;
@@ -73,10 +75,12 @@ public class MeshGenerator : MonoBehaviour
 
 
 
-
+        //Iterations of using diamond_square algorithm of each square needs.
         int iterations = (int)Mathf.Log(xSize, 2);
-        int numSquares = 1; // num_square* num_square 个小正方形
-        int squareSize = xSize; //每个小正方形边长
+        //Number of squares for each iteration
+        int numSquares = 1; 
+        //Edge length of square.
+        int squareSize = xSize; 
 
         for (int n = 0; n < iterations; n++)
         {
@@ -128,7 +132,7 @@ public class MeshGenerator : MonoBehaviour
 
 
 
-
+    //Damiond square algorithm
     void DimondSquare(int row, int col, int size, float offset)
     {
         int halfSize = (int)(size * 0.5f);
