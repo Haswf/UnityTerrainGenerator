@@ -12,6 +12,9 @@ public class MeshGenerator : MonoBehaviour
     private int[] triangles;
     public int xSize = 20;
     public int zSize = 20;
+
+    public float mHeight;
+
     void Start()
     {
         mesh = new Mesh();
@@ -58,6 +61,44 @@ public class MeshGenerator : MonoBehaviour
         }
 
 
+        //vertices[0].y = UnityEngine.Random.Range(-mHeight, mHeight);
+        //vertices[xSize].y = UnityEngine.Random.Range(-mHeight, mHeight);
+        //vertices[vertices.Length - 1].y = UnityEngine.Random.Range(-mHeight, mHeight);
+        //vertices[vertices.Length - 1 - xSize].y = UnityEngine.Random.Range(-mHeight, mHeight);
+
+        vertices[0].y = 5;
+        vertices[xSize].y = 5;
+        vertices[vertices.Length - 1].y = 5;
+        vertices[vertices.Length - 1 - xSize].y = 5;
+
+
+
+
+        int iterations = (int)Mathf.Log(xSize, 2);
+        int numSquares = 1; // num_square* num_square 个小正方形
+        int squareSize = xSize; //每个小正方形边长
+
+        for (int n = 0; n < iterations; n++)
+        {
+            int row = 0;
+            for (int j = 0; j < numSquares; j++)
+            {
+                int col = 0;
+                for (int k = 0; k < numSquares; k++)
+                {
+                    DimondSquare(row, col, squareSize, mHeight);
+                    col += squareSize;
+                }
+                row += squareSize;
+            }
+            numSquares *= 2;
+            squareSize /= 2;
+            mHeight *= 0.5f;
+        }
+
+
+
+
     }
 
     void UpdateMesh()
@@ -83,5 +124,24 @@ public class MeshGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+
+
+
+    void DimondSquare(int row, int col, int size, float offset)
+    {
+        int halfSize = (int)(size * 0.5f);
+        int topLeft = row * (xSize + 1) + col;
+        int botLeft = (row + size) * (xSize + 1) + col;
+
+        int mid = (int)(row + halfSize) * (xSize + 1) + (int)(col + halfSize);
+        vertices[mid].y = (vertices[topLeft].y + vertices[topLeft + size].y + vertices[botLeft].y + vertices[botLeft + size].y) * 0.25f + UnityEngine.Random.Range(0, offset);
+        vertices[mid].y = (vertices[topLeft].y + vertices[topLeft + size].y + vertices[botLeft + size].y) * 0.25f + UnityEngine.Random.Range(0, offset);
+
+        vertices[topLeft + halfSize].y = (vertices[topLeft].y + vertices[topLeft + size].y + vertices[mid].y) / 3 + UnityEngine.Random.Range(0, offset);
+        vertices[mid + halfSize].y = (vertices[topLeft].y + vertices[botLeft].y + vertices[mid].y) + UnityEngine.Random.Range(0, offset);
+        vertices[mid + halfSize].y = (vertices[topLeft + size].y + vertices[botLeft + size].y + vertices[mid].y) / 3 + UnityEngine.Random.Range(0, offset);
+        vertices[botLeft + halfSize].y = (vertices[botLeft].y + vertices[botLeft + size].y + vertices[mid].y) / 3 + UnityEngine.Random.Range(0, offset);
     }
 }
