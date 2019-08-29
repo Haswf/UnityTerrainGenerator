@@ -334,11 +334,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1073619947}
   - component: {fileID: 1073619946}
-  - component: {fileID: 1073619945}
   - component: {fileID: 1073619944}
-  - component: {fileID: 1073619950}
-  - component: {fileID: 1073619949}
-  - component: {fileID: 1073619948}
+  - component: {fileID: 1073619945}
   m_Layer: 0
   m_Name: MeshGen
   m_TagString: Untagged
@@ -358,8 +355,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633c5797421bc4143906c1f5c6324e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 20
-  zSize: 20
+  mSize: 5
+  seed: 0
   mHeight: 2
 --- !u!23 &1073619945
 MeshRenderer:
@@ -378,7 +375,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -420,48 +417,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1073619948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073619943}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62e96fa7d4cc49e594450bb6109ffc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mDivisions: 20
-  mSize: 400
-  mHeight: 10
---- !u!114 &1073619949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073619943}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62e96fa7d4cc49e594450bb6109ffc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mDivisions: 0
-  mSize: 0
-  mHeight: 0
---- !u!114 &1073619950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073619943}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62e96fa7d4cc49e594450bb6109ffc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mDivisions: 0
-  mSize: 0
-  mHeight: 0

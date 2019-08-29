@@ -21,7 +21,7 @@ public class MeshGenerator : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         CreateShape();
-        DimondSquare();
+        DiamondSquare();
         UpdateMesh();
 
     }
@@ -104,27 +104,27 @@ public class MeshGenerator : MonoBehaviour
 
 
     //Damiond square algorithm
-    void DimondSquare(int row, int col, int size, float offset)
+    void DiamondSquare()
     {
-
         float average;
-        int VertexPerLine = mSize + 1;
-        // 2d arrays contains height of each vertex
-        float[,] heights = new float[VertexPerLine, VertexPerLine];
-        
-        // declare initial height of 
-        heights[0, VertexPerLine-1] = seed;
-        heights[0, 0] = seed;
-        heights[VertexPerLine-1, 0] = seed;
-        heights[VertexPerLine-1, VertexPerLine-1] = seed;
 
-        for (int sideLength = mSize; sideLength >= 2; sideLength /= 2)
+        int DATA_SIZE = mSize + 2;
+        // 2d arrays contains height of each vertex
+        float[,] heights = new float[DATA_SIZE, DATA_SIZE];
+
+        // declare initial height of 
+        heights[0,DATA_SIZE - 1] = seed;
+        heights[0, 0] = seed;
+        heights[DATA_SIZE - 1, 0] = seed;
+        heights[DATA_SIZE - 1, DATA_SIZE - 1] = seed;
+
+        for (int sideLength = DATA_SIZE-1; sideLength >= 2; sideLength /= 2)
         {
             int halfSize = sideLength / 2;
             // x and y stand for coordinates of each vertex in 2d array 
-            for (int x = 0; x < VertexPerLine - 1; x += sideLength)
+            for (int x = 0; x < DATA_SIZE- 1; x += sideLength)
             {
-                for (int y = 0; y < VertexPerLine - 1; y += sideLength)
+                for (int y = 0; y < DATA_SIZE - 1; y += sideLength)
                 {
                     average = heights[x, y];
                     average += heights[x + sideLength, y];
@@ -137,29 +137,37 @@ public class MeshGenerator : MonoBehaviour
                 }
             }
 
-            for (int x = 0; x < VertexPerLine - 1; x += halfSize)
+            for (int x = 0; x < DATA_SIZE - 1; x += halfSize)
             {
-                for (int y = (x+halfSize) % sideLength; y < UPPER; y+=sideLength)
+                for (int y = (x + halfSize) % sideLength; y < DATA_SIZE - 1; y += sideLength)
                 {
-                    
+                    float avg = heights[(x - halfSize + DATA_SIZE - 1) % (DATA_SIZE - 1), y] +
+                        heights[(x + halfSize) % (DATA_SIZE - 1), y] +
+                        heights[x, (y + halfSize) % (DATA_SIZE - 1)] +
+                        heights[x, (y - halfSize + DATA_SIZE - 1) % (DATA_SIZE - 1)];
+
+                    avg /= 4.0f;
+                    avg = avg + UnityEngine.Random.Range(0, mHeight);
+
+                    heights[x, y] = avg;
+
+                    if (x == 0) heights[DATA_SIZE - 1, y] = avg;
+                    if (y == 0) heights[x, DATA_SIZE - 1] = avg;
+
                 }
             }
         }
+        for (int x = 0; x < DATA_SIZE - 1; x++)
+        {
+            for (int y = 0; y < DATA_SIZE - 1; y++)
+            {
+                //print(x);
+                //print(y);
+                //print(heights[x, y]);
+                vertices[x + y * (mSize + 1)].y = heights[x, y];
 
+            }
 
-//
-//
-//        int halfSize (int)(size * 0.5f);
-//        int topLeft = row * (mSize + 1) + col;
-//        int botLeft = (row + size) * (mSize + 1) + col;
-//
-//        int mid = (int)(row + halfSize) * (mSize + 1) + (int)(col + halfSize);
-//        vertices[mid].y = (vertices[topLeft].y + vertices[topLeft + size].y + vertices[botLeft].y + vertices[botLeft + size].y) * 0.25f + UnityEngine.Random.Range(0, offset);
-//        vertices[mid].y = (vertices[topLeft].y + vertices[topLeft + size].y + vertices[botLeft + size].y) * 0.25f + UnityEngine.Random.Range(0, offset);
-//
-//        vertices[topLeft + halfSize].y = (vertices[topLeft].y + vertices[topLeft + size].y + vertices[mid].y) / 3 + UnityEngine.Random.Range(0, offset);
-//        vertices[mid + halfSize].y = (vertices[topLeft].y + vertices[botLeft].y + vertices[mid].y) + UnityEngine.Random.Range(0, offset);
-//        vertices[mid + halfSize].y = (vertices[topLeft + size].y + vertices[botLeft + size].y + vertices[mid].y) / 3 + UnityEngine.Random.Range(0, offset);
-//        vertices[botLeft + halfSize].y = (vertices[botLeft].y + vertices[botLeft + size].y + vertices[mid].y) / 3 + UnityEngine.Random.Range(0, offset);
+        }
     }
 }
