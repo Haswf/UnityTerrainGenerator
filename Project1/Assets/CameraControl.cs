@@ -60,5 +60,13 @@ public class CameraControl : MonoBehaviour
             // move camera if within boundary
             transform.position += movement;
         }
+
+    }
+    private void OnCollisionEnter(Collision col)
+    {
+        print("First point that collided: " + col.contacts[0].point);
+        Rigidbody body = col.gameObject.GetComponent<Rigidbody>();
+        body.velocity = Vector3.zero;
+        body.angularVelocity = Vector3.zero;
     }
 }
