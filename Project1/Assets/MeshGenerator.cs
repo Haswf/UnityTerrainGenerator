@@ -84,6 +84,8 @@ public class MeshGenerator : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
+        print(mesh.bounds.size);
+
     }
     
     public void SetSeed(int seed) {
