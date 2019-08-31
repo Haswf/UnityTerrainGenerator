@@ -6,12 +6,58 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MeshGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeshGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/MeshGenerator.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2461">
+              <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+              <folding>
+                <marker date="1567223851540" expanded="true" signature="6:92" ph="..." />
+                <marker date="1567223851540" expanded="true" signature="175:5650" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="390:451" ph="/* smotthness of the terrain. ... */" />
+                <marker date="1567223851540" expanded="true" signature="732:1039" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="1067:2018" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="1219:1384" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="1273:1374" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="1523:2012" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="1576:1981" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="2041:2145" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="2185:2236" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="2297:5648" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="2630:2945" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="3001:3180" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="3272:5397" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="3457:4252" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="3532:4238" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="4308:5295" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="4409:5281" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="5034:5132" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="5165:5263" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="5484:5642" ph="{...}" />
+                <marker date="1567223851540" expanded="true" signature="5539:5631" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>mSize</find>
+      <find>DATA_SIZE</find>
+      <find>range</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -38,8 +84,20 @@
       </list>
     </option>
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="309" />
+    <option name="y" value="17" />
+    <option name="width" value="1883" />
+    <option name="height" value="2177" />
+  </component>
   <component name="ProjectId" id="1Q3XdysIqYlx7dYr6Jhw1sCaibg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
@@ -47,7 +105,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -90,8 +148,52 @@
       <workItem from="1566383163519" duration="3046000" />
       <workItem from="1566446429477" duration="4542000" />
       <workItem from="1567000355184" duration="4536000" />
+      <workItem from="1567218295490" duration="1244000" />
+      <workItem from="1567219705193" duration="4154000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5398000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="55" y="-7" width="2146" height="1248" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Unity" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -103,7 +205,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>
@@ -119,20 +242,41 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/MeshGenerator.cs</url>
-          <line>107</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/MeshGenerator.cs" initialLine="106">
-            <startOffsets>
-              <option value="2709" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2710" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/MeshGenerator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2461">
+          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+          <folding>
+            <marker date="1567223851540" expanded="true" signature="6:92" ph="..." />
+            <marker date="1567223851540" expanded="true" signature="175:5650" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="390:451" ph="/* smotthness of the terrain. ... */" />
+            <marker date="1567223851540" expanded="true" signature="732:1039" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="1067:2018" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="1219:1384" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="1273:1374" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="1523:2012" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="1576:1981" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="2041:2145" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="2185:2236" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="2297:5648" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="2630:2945" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="3001:3180" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="3272:5397" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="3457:4252" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="3532:4238" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="4308:5295" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="4409:5281" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="5034:5132" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="5165:5263" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="5484:5642" ph="{...}" />
+            <marker date="1567223851540" expanded="true" signature="5539:5631" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
