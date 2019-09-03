@@ -6,6 +6,7 @@
       <e p="Assets" t="Include">
         <e p="CameraControl.cs" t="Include" />
         <e p="MeshGenerator.cs" t="Include" />
+        <e p="TextureGenerator.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
