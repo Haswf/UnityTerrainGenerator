@@ -15,7 +15,7 @@ public class MeshGenerator : MonoBehaviour
     // range of height for generating height offset
     public float range;
     
-    // smotthness of the terrain. 
+    // smoothness of the terrain. 
     // 0 yields crystal world.
     public float smoothness;
     
@@ -84,6 +84,8 @@ public class MeshGenerator : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
+        GetComponent<MeshCollider>().sharedMesh = mesh;
+
     }
     
     public void SetSeed(int seed) {

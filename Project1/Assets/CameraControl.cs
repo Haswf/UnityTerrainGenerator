@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -9,17 +10,18 @@ public class CameraControl : MonoBehaviour
     public float moveSpeed = 10.0f;
     public float horizontalSpeed = 2.0f;
     public float verticalSpeed = 2.0f;
+    // drag MeshGen to this GameObject
+    public GameObject terrain;
     
     private float _yaw = 0.0f;
     private float _pitch = 0.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
     // Update is called once per frame
     void Update()
-    {    
+    {   
+        // Get mesh from MeshGen object
+        Mesh mesh = terrain.GetComponent<MeshFilter>().mesh;
+
         // Make cursor invisible
         Cursor.visible = false;
         // lock cursor to the center of the screen
@@ -31,20 +33,39 @@ public class CameraControl : MonoBehaviour
         // change orientation of camera
         transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
         
+        // vector to store movement
+        Vector3 movement = Vector3.zero;
+        
         // Move object in the direction of camera
         if (Input.GetKey(KeyCode.W)){
-            transform.position += Camera.main.transform.forward * moveSpeed * Time.deltaTime;
+            movement += Camera.main.transform.forward * moveSpeed * Time.deltaTime;
         }
         // - is used to get backward direction
         if (Input.GetKey(KeyCode.S)){
-            transform.position += Camera.main.transform.forward * -moveSpeed * Time.deltaTime;
+            movement += Camera.main.transform.forward * -moveSpeed * Time.deltaTime;
         }
         // - is used to get left direction
         if (Input.GetKey(KeyCode.A)){
-            transform.position += Camera.main.transform.right * -moveSpeed * Time.deltaTime;
+            movement += Camera.main.transform.right * -moveSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D)){
-            transform.position += Camera.main.transform.right * moveSpeed * Time.deltaTime;
+            movement += Camera.main.transform.right * moveSpeed * Time.deltaTime;
         }
+        // check x coordinate if within boundary
+        if ((transform.position.x + movement.x <= mesh.bounds.size.x && transform.position.x + movement.x >= 0) &&
+            // check z coordinate if within boundary
+            (transform.position.z + movement.z <= mesh.bounds.size.z && transform.position.z + movement.z >= 0)) {
+            // move camera
+            transform.position += movement;
+        }
+
+    }
+    private void OnCollisionEnter(Collision col)
+    {
+//        //print("First point that collided: " + col.contacts[0].point);
+//        //GetComponent<Camera>().transform.position = col.contacts[0].point + Vector3.up * 3;
+//        Rigidbody body = GetComponent<Rigidbody>();
+//        body.velocity = Vector3.zero;
+//        body.angularVelocity = Vector3.zero;
     }
 }
