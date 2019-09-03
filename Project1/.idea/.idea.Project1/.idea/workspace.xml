@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cc5d800-3172-4749-ad27-b03149563d79" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraControl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MeshGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeshGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TerrainCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TerrainCollision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,32 +20,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/MeshGenerator.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1078">
-              <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+            <state relative-caret-position="432">
+              <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
               <folding>
-                <marker date="1567248952379" expanded="false" signature="6:92" ph="..." />
-                <marker date="1567248952379" expanded="true" signature="175:5707" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="390:451" ph="/* smotthness of the terrain. ... */" />
-                <marker date="1567248952379" expanded="true" signature="732:1039" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="1067:2018" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="1219:1384" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="1273:1374" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="1523:2012" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="1576:1981" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="2041:2202" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="2242:2293" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="2354:5705" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="2687:3002" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="3058:3237" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="3329:5454" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="3514:4309" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="3589:4295" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="4365:5352" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="4466:5338" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="5091:5189" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="5222:5320" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="5541:5699" ph="{...}" />
-                <marker date="1567248952379" expanded="true" signature="5596:5688" ph="{...}" />
+                <marker date="1567506296964" expanded="false" signature="6:92" ph="..." />
+                <marker date="1567506296964" expanded="true" signature="175:5707" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="390:451" ph="/* smoothness of the terrain. ... */" />
+                <marker date="1567506296964" expanded="true" signature="732:1039" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="1067:2018" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="1219:1384" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="1273:1374" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="1523:2012" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="1576:1981" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="2041:2202" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="2242:2293" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="2354:5705" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="2687:3002" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="3058:3237" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="3329:5454" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="3514:4309" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="3589:4295" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="4365:5352" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="4466:5338" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="5091:5189" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="5222:5320" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="5541:5699" ph="{...}" />
+                <marker date="1567506296964" expanded="true" signature="5596:5688" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -54,19 +54,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/CameraControl.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+            <state relative-caret-position="672">
+              <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
               <folding>
-                <marker date="1567252218115" expanded="true" signature="6:152" ph="..." />
-                <marker date="1567252218115" expanded="true" signature="196:2585" ph="{...}" />
-                <marker date="1567252218115" expanded="true" signature="462:602" ph="/* TODO: Read mesh once when it was generated. Not every single frame. ... */" />
-                <marker date="1567252218115" expanded="true" signature="620:2302" ph="{...}" />
-                <marker date="1567252218115" expanded="true" signature="1322:1417" ph="{...}" />
-                <marker date="1567252218115" expanded="true" signature="1501:1597" ph="{...}" />
-                <marker date="1567252218115" expanded="true" signature="1677:1771" ph="{...}" />
-                <marker date="1567252218115" expanded="true" signature="1808:1901" ph="{...}" />
-                <marker date="1567252218115" expanded="true" signature="2194:2295" ph="{...}" />
-                <marker date="1567252218115" expanded="true" signature="2351:2583" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="6:152" ph="..." />
+                <marker date="1567510063320" expanded="true" signature="196:2590" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="515:2216" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="1217:1312" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="1396:1492" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="1572:1666" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="1703:1796" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="2127:2209" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="2265:2588" ph="{...}" />
+                <marker date="1567510063320" expanded="true" signature="2272:2582" ph="/* print(&quot;First point that collided: &quot; + col.contacts[0].point); ... */" />
               </folding>
             </state>
           </provider>
@@ -86,7 +86,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/TerrainCollision.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CameraControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MeshGenerator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -95,8 +94,8 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/NewBehaviourScript.cs" />
         <option value="$PROJECT_DIR$/Assets/testCollision.cs" />
-        <option value="$PROJECT_DIR$/Assets/MeshGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/TerrainCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/MeshGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/CameraControl.cs" />
       </list>
     </option>
@@ -111,8 +110,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1417" />
-    <option name="y" value="64" />
+    <option name="x" value="1414" />
+    <option name="y" value="63" />
     <option name="width" value="1883" />
     <option name="height" value="2177" />
   </component>
@@ -123,13 +122,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
-      <pane id="UnityExplorer">
-        <option name="show-hidden-items" value="false" />
-        <option name="show-project-names" value="true" />
-      </pane>
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="AssemblyExplorer" />
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+        <option name="show-project-names" value="true" />
       </pane>
       <pane id="FileSystemExplorer" />
     </panes>
@@ -141,7 +149,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -188,11 +196,14 @@
       <workItem from="1567219705193" duration="4154000" />
       <workItem from="1567237440807" duration="6274000" />
       <workItem from="1567248829949" duration="3423000" />
+      <workItem from="1567416176505" duration="871000" />
+      <workItem from="1567503151636" duration="22000" />
+      <workItem from="1567503350252" duration="2921000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15095000" />
+    <option name="totallyTimeSpent" value="18909000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -206,9 +217,10 @@
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="2146" height="1248" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25227383" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25945428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Build" visible="true" weight="0.3295053" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -286,56 +298,54 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Assets/testCollision.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/TerrainCollision.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/TerrainCollision.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/MeshGenerator.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1078">
-          <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+        <state relative-caret-position="432">
+          <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding>
-            <marker date="1567248952379" expanded="false" signature="6:92" ph="..." />
-            <marker date="1567248952379" expanded="true" signature="175:5707" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="390:451" ph="/* smotthness of the terrain. ... */" />
-            <marker date="1567248952379" expanded="true" signature="732:1039" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="1067:2018" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="1219:1384" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="1273:1374" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="1523:2012" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="1576:1981" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="2041:2202" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="2242:2293" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="2354:5705" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="2687:3002" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="3058:3237" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="3329:5454" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="3514:4309" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="3589:4295" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="4365:5352" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="4466:5338" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="5091:5189" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="5222:5320" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="5541:5699" ph="{...}" />
-            <marker date="1567248952379" expanded="true" signature="5596:5688" ph="{...}" />
+            <marker date="1567506296964" expanded="false" signature="6:92" ph="..." />
+            <marker date="1567506296964" expanded="true" signature="175:5707" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="390:451" ph="/* smoothness of the terrain. ... */" />
+            <marker date="1567506296964" expanded="true" signature="732:1039" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="1067:2018" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="1219:1384" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="1273:1374" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="1523:2012" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="1576:1981" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="2041:2202" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="2242:2293" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="2354:5705" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="2687:3002" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="3058:3237" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="3329:5454" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="3514:4309" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="3589:4295" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="4365:5352" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="4466:5338" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="5091:5189" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="5222:5320" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="5541:5699" ph="{...}" />
+            <marker date="1567506296964" expanded="true" signature="5596:5688" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/CameraControl.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+        <state relative-caret-position="672">
+          <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
           <folding>
-            <marker date="1567252218115" expanded="true" signature="6:152" ph="..." />
-            <marker date="1567252218115" expanded="true" signature="196:2585" ph="{...}" />
-            <marker date="1567252218115" expanded="true" signature="462:602" ph="/* TODO: Read mesh once when it was generated. Not every single frame. ... */" />
-            <marker date="1567252218115" expanded="true" signature="620:2302" ph="{...}" />
-            <marker date="1567252218115" expanded="true" signature="1322:1417" ph="{...}" />
-            <marker date="1567252218115" expanded="true" signature="1501:1597" ph="{...}" />
-            <marker date="1567252218115" expanded="true" signature="1677:1771" ph="{...}" />
-            <marker date="1567252218115" expanded="true" signature="1808:1901" ph="{...}" />
-            <marker date="1567252218115" expanded="true" signature="2194:2295" ph="{...}" />
-            <marker date="1567252218115" expanded="true" signature="2351:2583" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="6:152" ph="..." />
+            <marker date="1567510063320" expanded="true" signature="196:2590" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="515:2216" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="1217:1312" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="1396:1492" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="1572:1666" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="1703:1796" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="2127:2209" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="2265:2588" ph="{...}" />
+            <marker date="1567510063320" expanded="true" signature="2272:2582" ph="/* print(&quot;First point that collided: &quot; + col.contacts[0].point); ... */" />
           </folding>
         </state>
       </provider>

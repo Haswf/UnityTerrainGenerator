@@ -15,7 +15,7 @@ public class MeshGenerator : MonoBehaviour
     // range of height for generating height offset
     public float range;
     
-    // smotthness of the terrain. 
+    // smoothness of the terrain. 
     // 0 yields crystal world.
     public float smoothness;
     

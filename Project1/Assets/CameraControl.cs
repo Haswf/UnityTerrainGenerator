@@ -15,9 +15,7 @@ public class CameraControl : MonoBehaviour
     
     private float _yaw = 0.0f;
     private float _pitch = 0.0f;
-    // TODO: Read mesh once when it was generated. Not every single frame.
-    // private Mesh mesh;
-    
+
     // Update is called once per frame
     void Update()
     {   
@@ -53,20 +51,21 @@ public class CameraControl : MonoBehaviour
         if (Input.GetKey(KeyCode.D)){
             movement += Camera.main.transform.right * moveSpeed * Time.deltaTime;
         }
-        // check x coordinate
+        // check x coordinate if within boundary
         if ((transform.position.x + movement.x <= mesh.bounds.size.x && transform.position.x + movement.x >= 0) &&
-            // Check z coordinate
+            // check z coordinate if within boundary
             (transform.position.z + movement.z <= mesh.bounds.size.z && transform.position.z + movement.z >= 0)) {
-            // move camera if within boundary
+            // move camera
             transform.position += movement;
         }
 
     }
     private void OnCollisionEnter(Collision col)
     {
-        print("First point that collided: " + col.contacts[0].point);
-        Rigidbody body = col.gameObject.GetComponent<Rigidbody>();
-        body.velocity = Vector3.zero;
-        body.angularVelocity = Vector3.zero;
+//        //print("First point that collided: " + col.contacts[0].point);
+//        //GetComponent<Camera>().transform.position = col.contacts[0].point + Vector3.up * 3;
+//        Rigidbody body = GetComponent<Rigidbody>();
+//        body.velocity = Vector3.zero;
+//        body.angularVelocity = Vector3.zero;
     }
 }
