@@ -17,43 +17,47 @@ public class MeshGenerator : MonoBehaviour
     
     // range of height for generating height offset
     public float range;
-    
     // smoothness of the terrain. 
-    // 0 yields crystal world.
     public float smoothness;
-
-    // 2^n - 1. This is n.
+    // 2^n. This is n.
     public int dimension;
-    
     // Assign random height to corners?
     public bool randomCornerHeight;
 
-    public Renderer textureRender;    
+    private MeshRenderer textureRender;    
     public TerrainType[] regions;
-
-    // 2^n - 1
+    
     // number of vertices
     private int size;
+
+    private float[,] heightMap;
     
+    private Color[] colourMap;
     // Start is called before the first frame update
     void Start()
     {    
-        // Create Mesh of size `size`
+        size = (int) Mathf.Pow(2, dimension);
+        // Create new mesh
         mesh = new Mesh();
+        textureRender = GetComponent<MeshRenderer>();
         // Assign created mesh to the object attached to.
         GetComponent<MeshFilter>().mesh = mesh;
-        size = (int) Mathf.Pow(2, dimension);
-        CreateShape();
-        DiamondSquare();
+        CreateMesh();
+        GenerateHeightMap();
+        ApplyHeightMap();
+        GenerateColourMap();
+        ApplyTexture();
         UpdateMesh();
+        UpdateMeshCollider();
     }
     
-    void CreateShape()
+    void CreateMesh()
     {
-        // how many vertices
         vertices = new Vector3[size * size];
         uvs = new Vector2[size * size];
+        triangles = new int[(size-1) * (size-1) * 6];
 
+        // create vertices
         int i = 0;
         for (int z = 0; z < size; z++)
         {
@@ -64,8 +68,7 @@ public class MeshGenerator : MonoBehaviour
             }
         }
         
-        triangles = new int[(size-1) * (size-1) * 6];
-
+        // create triangles
         int vert = 0;
         int tris = 0;
         for (int y = 0; y < size-1; y++)
@@ -82,11 +85,16 @@ public class MeshGenerator : MonoBehaviour
                 vert++;
                 tris += 6;
             }
-
             vert++;
         }
     }
 
+
+    void UpdateMeshCollider()
+    {
+        GetComponent<MeshCollider>().sharedMesh = mesh;
+    }
+    
     void UpdateMesh()
     {
         mesh.Clear();
@@ -94,21 +102,30 @@ public class MeshGenerator : MonoBehaviour
         mesh.triangles = triangles;
         mesh.uv = uvs;
         mesh.RecalculateNormals();
-        GetComponent<MeshCollider>().sharedMesh = mesh;
+    }
+    
+    void ApplyHeightMap()
+    {
+        // Map height to each vertex
+        for (int x = 0; x < size; x++)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                float currentHeight = heightMap[x, y];
+                vertices[y * size + x].y = currentHeight;
+            }
 
+        }
     }
     
     public void SetSeed(int seed) {
         UnityEngine.Random.InitState(seed);
     }
     
-    //Damiond square algorithm
-    void DiamondSquare()
+    public void GenerateHeightMap()
     {
-        float average;
-        Color[] colourMap = new Color[(size) * (size)];
         // 2D array of height
-        float[,] heights = new float[size + 1, size + 1];
+        this.heightMap = new float[size + 1, size + 1];
 
         // set seed for random number generator
         SetSeed((int)UnityEngine.Random.Range(0, 100));
@@ -116,21 +133,22 @@ public class MeshGenerator : MonoBehaviour
         // Assign random value within (-range, range) to each corner
         if (randomCornerHeight)
         {
-            heights[0,size] = UnityEngine.Random.Range(-range, range);
-            heights[0, 0] = UnityEngine.Random.Range(-range, range);
-            heights[size, 0] = UnityEngine.Random.Range(-range, range);
-            heights[size, size] = UnityEngine.Random.Range(-range, range);
+            heightMap[0,size] = UnityEngine.Random.Range(-range, range);
+            heightMap[0, 0] = UnityEngine.Random.Range(-range, range);
+            heightMap[size, 0] = UnityEngine.Random.Range(-range, range);
+            heightMap[size, size] = UnityEngine.Random.Range(-range, range);
         }
         // o/w assign range to each corner
         else
         {
-            heights[0,size] = range;
-            heights[0, 0] = range;
-            heights[size, 0] = range;
-            heights[size, size] = range;
+            heightMap[0,size] = range;
+            heightMap[0, 0] = range;
+            heightMap[size, 0] = range;
+            heightMap[size, size] = range;
         }
         
-        
+        float average;
+
         for (int sideLength = size; sideLength >= 2; sideLength /= 2)
         {
             int halfSize = sideLength / 2;
@@ -139,17 +157,17 @@ public class MeshGenerator : MonoBehaviour
             {
                 for (int y = 0; y < size; y += sideLength)
                 {
-                    average = heights[x, y]; // left top corner
-                    average += heights[x + sideLength, y]; // right top corner
-                    average += heights[x, y + sideLength]; // left bottom corner
-                    average += heights[x + sideLength, y + sideLength]; // left bottom corner
+                    average = heightMap[x, y]; // left top corner
+                    average += heightMap[x + sideLength, y]; // right top corner
+                    average += heightMap[x, y + sideLength]; // left bottom corner
+                    average += heightMap[x + sideLength, y + sideLength]; // left bottom corner
                     
                     // calc average
                     average /= 4.0f;
                     // offset height by a random value
                     average += UnityEngine.Random.value * (range * 2.0f) - range;
                     // Assign new height to mid point
-                    heights[x + halfSize, y + halfSize] = average;
+                    heightMap[x + halfSize, y + halfSize] = average;
                 }
             }
 
@@ -157,26 +175,26 @@ public class MeshGenerator : MonoBehaviour
             {
                 for (int y = (x + halfSize) % sideLength; y < size; y += sideLength)
                 {
-                    average = heights[(x - halfSize + size) % (size), y];
-                    average += heights[(x + halfSize) % (size), y];
-                    average += heights[x, (y + halfSize) % (size)];
-                    average += heights[x, (y - halfSize + size) % (size)];
+                    average = heightMap[(x - halfSize + size) % size, y];
+                    average += heightMap[(x + halfSize) % size, y];
+                    average += heightMap[x, (y + halfSize) % size];
+                    average += heightMap[x, (y - halfSize + size) % size];
                     
                     // calc average
                     average /= 4.0f;
                     // offset height by a random value
                     average += UnityEngine.Random.value * (range * 2.0f) - range;
 
-                    heights[x, y] = average;
+                    heightMap[x, y] = average;
 
                     if (x == 0)
                     {
-                        heights[size, y] = average;
+                        heightMap[size, y] = average;
                     }
 
                     if (y == 0)
                     {
-                        heights[x, size] = average;
+                        heightMap[x, size] = average;
                     }
                 }
             }
@@ -184,29 +202,31 @@ public class MeshGenerator : MonoBehaviour
             range -= range * 0.5f * smoothness;
         }
         
-        // Map height to each vertex
-        for (int x = 0; x < size; x++)
+    }
+
+    public void GenerateColourMap()
+    {    
+        int width = heightMap.GetLength(0);
+        int height = heightMap.GetLength(1);
+        this.colourMap = new Color[width * height];
+        for (int x = 0; x < width; x++)
         {
-            for (int y = 0; y < size; y++)
+            for (int y = 0; y < height; y++)
             {
-                float currentHeight = heights[x, y];
+                float currentHeight = heightMap[x, y];
                 for (int i = 0; i < regions.Length; i++)
                 {
                     if (currentHeight <= regions[i].height)
                     {   
-                        colourMap[y * (size) + x] = regions[i].colour;
+                        colourMap[y * size + x] = regions[i].colour;
                         break;
                     }
                 }
-
-                vertices[y * (size) + x].y = currentHeight;
             }
-
         }
-        Texture2D texture = TextureFromColourMap(colourMap, size, size);
-        textureRender.sharedMaterial.mainTexture = texture;
     }
-    public static Texture2D TextureFromColourMap(Color[] colourMap, int width, int height)
+
+    public Texture2D TextureFromColourMap(Color[] colourMap, int width, int height)
     {
         Texture2D texture = new Texture2D(width, height);
         texture.SetPixels(colourMap);
@@ -214,7 +234,14 @@ public class MeshGenerator : MonoBehaviour
         return texture;
     }
 
+    public void ApplyTexture()
+    {    
+        Texture2D texture = TextureFromColourMap(colourMap, size, size);
+        textureRender.sharedMaterial.mainTexture = texture;
+    }
+
 }
+// structure to define terrain colour
 [System.Serializable]
 public struct TerrainType
 {

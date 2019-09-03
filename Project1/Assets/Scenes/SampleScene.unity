@@ -285,9 +285,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 50
-  smoothness: 1
+  smoothness: 1.1
   dimension: 8
   randomCornerHeight: 1
+  textureRender: {fileID: 1073619945}
+  regions:
+  - name: Sea
+    height: 10
+    colour: {r: 0, g: 0.81323457, b: 1, a: 0}
+  - name: Sand
+    height: 12
+    colour: {r: 1, g: 0.84843576, b: 0, a: 0}
+  - name: Land
+    height: 30
+    colour: {r: 0.0461018, g: 0.39215687, b: 0.14983094, a: 0}
+  - name: Mountain
+    height: 40
+    colour: {r: 0.6886792, g: 0.5839348, b: 0.40930933, a: 0}
+  - name: Earth
+    height: 45
+    colour: {r: 0.8584906, g: 0.64319307, b: 0.38875046, a: 0}
+  - name: Snow
+    height: 100
+    colour: {r: 1, g: 1, b: 1, a: 0}
 --- !u!23 &1073619945
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -305,7 +325,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 91be854b76edab44e9e318f4793cb920, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
