@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
@@ -29,7 +30,8 @@ public class MeshGenerator : MonoBehaviour
     
     // number of vertices
     private int size;
-
+    private float minHeight;
+    private float maxHeight;
     private float[,] heightMap;
     
     private Color[] colourMap;
@@ -45,6 +47,7 @@ public class MeshGenerator : MonoBehaviour
         CreateMesh();
         GenerateHeightMap();
         ApplyHeightMap();
+        UpdateMaxMinHeight();
         GenerateColourMap();
         ApplyTexture();
         UpdateMesh();
@@ -103,7 +106,30 @@ public class MeshGenerator : MonoBehaviour
         mesh.uv = uvs;
         mesh.RecalculateNormals();
     }
-    
+
+    public void UpdateMaxMinHeight()
+    {    
+        // find max and min value in heightmap
+        maxHeight = int.MinValue;
+        minHeight = int.MaxValue;
+        for (int x = 0; x < size; x++)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                float currentHeight = heightMap[x, y];
+                if (currentHeight > maxHeight)
+                {
+                    maxHeight = currentHeight;
+                }
+
+                if (currentHeight < minHeight)
+                {
+                    minHeight = currentHeight;
+                }
+            }
+        }
+    }
+
     void ApplyHeightMap()
     {
         // Map height to each vertex
@@ -114,7 +140,6 @@ public class MeshGenerator : MonoBehaviour
                 float currentHeight = heightMap[x, y];
                 vertices[y * size + x].y = currentHeight;
             }
-
         }
     }
     
@@ -124,6 +149,7 @@ public class MeshGenerator : MonoBehaviour
     
     public void GenerateHeightMap()
     {
+        float range = this.range;
         // 2D array of height
         this.heightMap = new float[size + 1, size + 1];
 
@@ -201,11 +227,24 @@ public class MeshGenerator : MonoBehaviour
             // Lower the random value range
             range -= range * 0.5f * smoothness;
         }
-        
     }
 
     public void GenerateColourMap()
     {    
+        // Decide threshold height of each terrain based on minHeight and maxHeight
+        // water
+        regions[0].height = minHeight + (maxHeight - minHeight) * 0.4f;
+        // sand
+        regions[1].height = minHeight + (maxHeight - minHeight) * 0.42f;
+        // wood
+        regions[2].height = minHeight + (maxHeight - minHeight) * 0.8f;
+        // mountain
+        regions[3].height = minHeight + (maxHeight - minHeight) * 0.85f;
+        // earth
+        regions[4].height = minHeight + (maxHeight - minHeight) * 0.9f;
+        // snow
+        regions[5].height = minHeight + (maxHeight - minHeight);
+
         int width = heightMap.GetLength(0);
         int height = heightMap.GetLength(1);
         this.colourMap = new Color[width * height];
