@@ -4,9 +4,17 @@
     <e p="C:\COMP30019Project1\Project1" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="CameraControl.cs" t="Include" />
-        <e p="MeshGenerator.cs" t="Include" />
-        <e p="TextureGenerator.cs" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="FlyingVehicle.cs" t="Include" />
+          <e p="MeshGenerator.cs" t="Include" />
+          <e p="PointLight.cs" t="Include" />
+          <e p="SunMovement.cs" t="Include" />
+          <e p="UpdatePointLight.cs" t="Include" />
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="TerrainShader.shader" t="Include" />
+          <e p="WaterShader.shader" t="Include" />
+        </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

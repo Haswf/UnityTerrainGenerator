@@ -25,7 +25,6 @@ public class MeshGenerator : MonoBehaviour
     // Assign random height to corners?
     public bool randomCornerHeight;
 
-    private MeshRenderer textureRender;    
     public TerrainType[] regions;
     
     // number of vertices
@@ -41,15 +40,12 @@ public class MeshGenerator : MonoBehaviour
         size = (int) Mathf.Pow(2, dimension);
         // Create new mesh
         mesh = new Mesh();
-        textureRender = GetComponent<MeshRenderer>();
         // Assign created mesh to the object attached to.
         GetComponent<MeshFilter>().mesh = mesh;
         CreateMesh();
         GenerateHeightMap();
-        ApplyHeightMap();
         UpdateMaxMinHeight();
-        GenerateColourMap();
-        ApplyTexture();
+        GenerateTerrain();
         UpdateMesh();
         UpdateMeshCollider();
     }
@@ -59,7 +55,7 @@ public class MeshGenerator : MonoBehaviour
         vertices = new Vector3[size * size];
         uvs = new Vector2[size * size];
         triangles = new int[(size-1) * (size-1) * 6];
-
+        colourMap = new Color[size * size];
         // create vertices
         int i = 0;
         for (int z = 0; z < size; z++)
@@ -92,7 +88,7 @@ public class MeshGenerator : MonoBehaviour
         }
     }
 
-
+    // update newly generated mesh to mesh collider
     void UpdateMeshCollider()
     {
         GetComponent<MeshCollider>().sharedMesh = mesh;
@@ -103,13 +99,14 @@ public class MeshGenerator : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
+        mesh.colors = colourMap;
         mesh.uv = uvs;
         mesh.RecalculateNormals();
     }
 
     public void UpdateMaxMinHeight()
-    {    
-        // find max and min value in heightmap
+    {
+        // find max and min value in heightMap
         maxHeight = int.MinValue;
         minHeight = int.MaxValue;
         for (int x = 0; x < size; x++)
@@ -130,8 +127,20 @@ public class MeshGenerator : MonoBehaviour
         }
     }
 
-    void ApplyHeightMap()
-    {
+    void GenerateTerrain()
+    {    
+        regions[0].height = minHeight + (maxHeight - minHeight) * 0.4f;
+        // sand
+        regions[1].height = minHeight + (maxHeight - minHeight) * 0.42f;
+        // wood
+        regions[2].height = minHeight + (maxHeight - minHeight) * 0.8f;
+        // mountain
+        regions[3].height = minHeight + (maxHeight - minHeight) * 0.85f;
+        // earth
+        regions[4].height = minHeight + (maxHeight - minHeight) * 0.9f;
+        // snow
+        regions[5].height = minHeight + (maxHeight - minHeight);
+        
         // Map height to each vertex
         for (int x = 0; x < size; x++)
         {
@@ -139,10 +148,19 @@ public class MeshGenerator : MonoBehaviour
             {
                 float currentHeight = heightMap[x, y];
                 vertices[y * size + x].y = currentHeight;
+                for (int i = 0; i < regions.Length; i++)
+                {    
+                    if (currentHeight <= regions[i].height)
+                    {   
+                        // Assign colour 
+                        colourMap[y * size + x] = regions[i].colour;
+                        break;
+                    }
+                }
             }
         }
     }
-    
+    // Set seed for random generator
     public void SetSeed(int seed) {
         UnityEngine.Random.InitState(seed);
     }
@@ -151,10 +169,10 @@ public class MeshGenerator : MonoBehaviour
     {
         float range = this.range;
         // 2D array of height
-        this.heightMap = new float[size + 1, size + 1];
+        heightMap = new float[size + 1, size + 1];
 
         // set seed for random number generator
-        SetSeed((int)UnityEngine.Random.Range(0, 100));
+        SetSeed(UnityEngine.Random.Range(0, 100));
         
         // Assign random value within (-range, range) to each corner
         if (randomCornerHeight)
@@ -206,7 +224,7 @@ public class MeshGenerator : MonoBehaviour
                     average += heightMap[x, (y + halfSize) % size];
                     average += heightMap[x, (y - halfSize + size) % size];
                     
-                    // calc average
+                    // calculate average
                     average /= 4.0f;
                     // offset height by a random value
                     average += UnityEngine.Random.value * (range * 2.0f) - range;
@@ -228,57 +246,7 @@ public class MeshGenerator : MonoBehaviour
             range -= range * 0.5f * smoothness;
         }
     }
-
-    public void GenerateColourMap()
-    {    
-        // Decide threshold height of each terrain based on minHeight and maxHeight
-        // water
-        regions[0].height = minHeight + (maxHeight - minHeight) * 0.4f;
-        // sand
-        regions[1].height = minHeight + (maxHeight - minHeight) * 0.42f;
-        // wood
-        regions[2].height = minHeight + (maxHeight - minHeight) * 0.8f;
-        // mountain
-        regions[3].height = minHeight + (maxHeight - minHeight) * 0.85f;
-        // earth
-        regions[4].height = minHeight + (maxHeight - minHeight) * 0.9f;
-        // snow
-        regions[5].height = minHeight + (maxHeight - minHeight);
-
-        int width = heightMap.GetLength(0);
-        int height = heightMap.GetLength(1);
-        this.colourMap = new Color[width * height];
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                float currentHeight = heightMap[x, y];
-                for (int i = 0; i < regions.Length; i++)
-                {
-                    if (currentHeight <= regions[i].height)
-                    {   
-                        colourMap[y * size + x] = regions[i].colour;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    public Texture2D TextureFromColourMap(Color[] colourMap, int width, int height)
-    {
-        Texture2D texture = new Texture2D(width, height);
-        texture.SetPixels(colourMap);
-        texture.Apply();
-        return texture;
-    }
-
-    public void ApplyTexture()
-    {    
-        Texture2D texture = TextureFromColourMap(colourMap, size, size);
-        textureRender.sharedMaterial.mainTexture = texture;
-    }
-
+    
 }
 // structure to define terrain colour
 [System.Serializable]
