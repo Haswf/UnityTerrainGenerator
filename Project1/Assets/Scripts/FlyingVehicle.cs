@@ -5,7 +5,7 @@ using System.Numerics;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class CameraControl : MonoBehaviour
+public class FlyingVehicle : MonoBehaviour
 {    
     public float moveSpeed = 10.0f;
     public float horizontalSpeed = 2.0f;
