@@ -62,6 +62,7 @@ Shader "Unlit/WaterShader"
 				float4 normal : NORMAL;
 				float4 color : COLOR;
                 float2 uv : TEXCOORD0;
+                float2 uv2 : TEXCOORD1;
 			};
 
 			struct vertOut
@@ -81,34 +82,24 @@ Shader "Unlit/WaterShader"
 			{
 				vertOut o;
 
-        
-
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
                 
                // v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
-                               
-                float4 displacement = float4(0.0f, 1*sin(0.5*v.vertex[0]+ _Time.y), 0.0f, 0.0f);
-                //float4 displacement = float4(0.0f, 3*sin(0.5*v.vertex[0]+ 5*_Time.y), 0.0f, 0.0f);
-                //float4 displacement = float4(0.0f, sin(0.5*v.vertex[0] +2*_Time.y*_Time.y), 0.0f, 0.0f);
-                //float4 displacement = float4(0.0f, sin(_Time.y), 0.0f, 0.0f);
-                //float4 displacement = float4(0.0f, 1.5*sin(v.vertex.x + 2*_Time.y), 0.0f, 0.0f);
-                //float4 displacement = float4(0.0f, sin(v.vertex.x + 0.2*_Time.y), 0.0f, 0.0f); // Q5c
-                v.vertex += displacement;
-                o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-                
+                float offset = random(v.uv);
+                float4 displacement = float4(5*offset, sin(0.1*(v.vertex.x+ _Time.y)+offset*2), 0.0f, 0.0f);
+
                 // Convert Vertex position and corresponding normal into world coords.
                 // Note that we have to multiply the normal by the transposed inverse of the world 
                 // transformation matrix (for cases where we have non-uniform scaling; we also don't
                 // care about the "fourth" dimension, because translations don't affect the normal) 
-                //v.normal.xyz = float3(v.vertex.x, -1/cos(v.vertex.x), v.normal.xyz.z);
-                                                            
+                v.normal.xyz = float3(1, -1/(cos(0.1*(v.vertex.x+ _Time.y)+offset*2)),v.normal.xyz.z);
+                v.vertex += displacement;
+                o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+                                     
                 float4 worldVertex = mul(unity_ObjectToWorld, v.vertex);
                 float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));   
                 
-				//o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.color =v.color;
-               
-
+				o.color = v.color;
 				// Pass out the world vertex position and world normal to be interpolated
 				// in the fragment shader (and utilised)
 				o.worldVertex = worldVertex;
@@ -124,20 +115,20 @@ Shader "Unlit/WaterShader"
 				float3 interpNormal = normalize(v.worldNormal);
 
 				// Calculate ambient RGB intensities
-				float Ka = 1;
+				float Ka = 0.01;
 				float3 amb = v.color.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * Ka;
 
 				// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again
 				// (when calculating the reflected ray in our specular component)
-				float fAtt = 1;
-				float Kd = 1;
+				float fAtt = 0.5;
+				float Kd = 0.001;
 				float3 L = normalize(_PointLightPosition - v.worldVertex.xyz);
 				float LdotN = dot(L, interpNormal);
 				float3 dif = fAtt * _PointLightColor.rgb * Kd * v.color.rgb * saturate(LdotN);
 
 				// Calculate specular reflections
-				float Ks = 0.1;
-				float specN = 10; // Values>>1 give tighter highlights
+				float Ks = 1;
+				float specN = 5; // Values>>1 give tighter highlights
 				float3 V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 				// Using classic reflection calculation:
 				//float3 R = normalize((2.0 * LdotN * interpNormal) - L);

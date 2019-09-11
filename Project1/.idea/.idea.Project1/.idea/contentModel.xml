@@ -9,6 +9,7 @@
           <e p="MeshGenerator.cs" t="Include" />
           <e p="PointLight.cs" t="Include" />
           <e p="SunMovement.cs" t="Include" />
+          <e p="TerrainGenerator.cs" t="Include" />
           <e p="UpdatePointLight.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
@@ -21,7 +22,7 @@
       <e p="Project1.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
-    <e p="C:\Users\Haswe\.Rider2019.1\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Haswe\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Project1.218252505.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Haswe\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Haswe\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Project1.218252505.00" t="ExcludeRecursive" />
   </component>
 </project>
