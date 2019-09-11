@@ -91,6 +91,4 @@ public class MeshGenerator : MonoBehaviour
         mesh.RecalculateNormals();
 
     }
-
-
 }

@@ -40,6 +40,7 @@ public class TerrainGenerator : MonoBehaviour
         size = (int) Mathf.Pow(2, dimension);
         // Create new mesh
         mesh = new Mesh();
+        mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         // Assign created mesh to the object attached to.
         GetComponent<MeshFilter>().mesh = mesh;
         CreateMesh();
@@ -129,18 +130,17 @@ public class TerrainGenerator : MonoBehaviour
 
     void GenerateTerrain()
     {    
-        regions[0].height = minHeight + (maxHeight - minHeight) * 0.4f;
+        regions[0].height = minHeight + (maxHeight - minHeight) * 0.42f;
         // sand
-        regions[1].height = minHeight + (maxHeight - minHeight) * 0.42f;
+        regions[1].height = minHeight + (maxHeight - minHeight) * 0.45f;
         // wood
         regions[2].height = minHeight + (maxHeight - minHeight) * 0.8f;
         // mountain
-        regions[3].height = minHeight + (maxHeight - minHeight) * 0.85f;
+        regions[3].height = minHeight + (maxHeight - minHeight) * 0.9f;
         // earth
-        regions[4].height = minHeight + (maxHeight - minHeight) * 0.9f;
+        regions[4].height = minHeight + (maxHeight - minHeight);
         // snow
-        regions[5].height = minHeight + (maxHeight - minHeight);
-        
+
         // Map height to each vertex
         for (int x = 0; x < size; x++)
         {

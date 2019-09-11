@@ -86,13 +86,13 @@ Shader "Unlit/WaterShader"
                 
                // v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
                 float offset = random(v.uv);
-                float4 displacement = float4(5*offset, sin(0.1*(v.vertex.x+ _Time.y)+offset*2), 0.0f, 0.0f);
+                float4 displacement = float4(5*offset, sin(0.2*(v.vertex.x+ _Time.y)+offset*2), 0.0f, 0.0f);
 
                 // Convert Vertex position and corresponding normal into world coords.
                 // Note that we have to multiply the normal by the transposed inverse of the world 
                 // transformation matrix (for cases where we have non-uniform scaling; we also don't
                 // care about the "fourth" dimension, because translations don't affect the normal) 
-                v.normal.xyz = float3(1, -1/(cos(0.1*(v.vertex.x+ _Time.y)+offset*2)),v.normal.xyz.z);
+                v.normal.xyz = float3(1, -1/(cos(0.2*(v.vertex.x+ _Time.y)+offset*2)),v.normal.xyz.z);
                 v.vertex += displacement;
                 o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
                                      
