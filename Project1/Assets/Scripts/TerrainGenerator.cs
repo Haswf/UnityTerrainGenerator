@@ -46,6 +46,7 @@ public class TerrainGenerator : MonoBehaviour
         GenerateHeightMap();
         UpdateMaxMinHeight();
         GenerateTerrain();
+        SetSeaLevel();
         UpdateMesh();
         UpdateMeshCollider();
     }
@@ -129,7 +130,7 @@ public class TerrainGenerator : MonoBehaviour
 
     void GenerateTerrain()
     {    
-        regions[0].height = minHeight + (maxHeight - minHeight) * 0.4f;
+        regions[0].height = minHeight + (maxHeight - minHeight) * 0.0f;
         // sand
         regions[1].height = minHeight + (maxHeight - minHeight) * 0.42f;
         // wood
@@ -159,6 +160,11 @@ public class TerrainGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    void SetSeaLevel()
+    {
+        GameObject.Find("Water").GetComponent<UpdateHeight>().SeaLevel = minHeight + (maxHeight - minHeight) * 0.4f;
     }
     // Set seed for random generator
     public void SetSeed(int seed) {

@@ -91,7 +91,7 @@ Shader "Unlit/WaterShader"
                 v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
                                
                 //float4 displacement = float4(0.0f, 10*random(v.uv)+sin(0.5*v.vertex[0]+ 2*_Time.y), 0.0f, 0.0f);
-                float4 displacement = float4(0.0f, 10+sin(0.5*v.vertex[0]+ 2*_Time.y), 0.0f, 0.0f);
+                float4 displacement = float4(0.0f, sin(0.5*v.vertex[0]+ 2*_Time.y), 0.0f, 0.0f);
                 v.vertex += displacement;
                 o.vertex = mul(UNITY_MATRIX_P, v.vertex);
 
