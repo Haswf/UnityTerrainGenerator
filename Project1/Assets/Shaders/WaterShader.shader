@@ -24,12 +24,13 @@
 
 //UNITY_SHADER_NO_UPGRADE
 
-Shader "Unlit/PhongShader"
+Shader "Unlit/WaterShader"
 {
 	Properties
 	{   
 		_PointLightColor("Point Light Color", Color) = (0, 0, 0)
 		_PointLightPosition("Point Light Position", Vector) = (0.0, 0.0, 0.0)
+        //_Color("Water Colour", float4) = (0, 191, 255, 1)
 	}
 	SubShader
 	{
@@ -43,12 +44,15 @@ Shader "Unlit/PhongShader"
 
 			uniform float3 _PointLightColor;
 			uniform float3 _PointLightPosition;
-
+            uniform float4 _Color;
+            
+            
 			struct vertIn
 			{
 				float4 vertex : POSITION;
 				float4 normal : NORMAL;
 				float4 color : COLOR;
+                float2 uv : TEXCOORD0;
 			};
 
 			struct vertOut
@@ -58,6 +62,10 @@ Shader "Unlit/PhongShader"
 				float4 worldVertex : TEXCOORD0;
 				float3 worldNormal : TEXCOORD1;
 			};
+            
+            float random (float2 uv){
+                return frac(sin(dot(uv,float2(12.9898,78.233)))*43758.5453123);
+            }
 
 			// Implementation of the vertex shader
 			vertOut vert(vertIn v)
@@ -69,11 +77,20 @@ Shader "Unlit/PhongShader"
 				// transformation matrix (for cases where we have non-uniform scaling; we also don't
 				// care about the "fourth" dimension, because translations don't affect the normal) 
 				float4 worldVertex = mul(unity_ObjectToWorld, v.vertex);
-				float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));
+				float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));           
 
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.color = v.color;
+                
+                v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
+                               
+                //float4 displacement = float4(0.0f, 10*random(v.uv)+sin(0.5*v.vertex[0]+ 2*_Time.y), 0.0f, 0.0f);
+                float4 displacement = float4(0.0f, 10+sin(0.5*v.vertex[0]+ 2*_Time.y), 0.0f, 0.0f);
+                v.vertex += displacement;
+                o.vertex = mul(UNITY_MATRIX_P, v.vertex);
+
+				//o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.color =v.color;
+               
 
 				// Pass out the world vertex position and world normal to be interpolated
 				// in the fragment shader (and utilised)
@@ -102,7 +119,7 @@ Shader "Unlit/PhongShader"
 				float3 dif = fAtt * _PointLightColor.rgb * Kd * v.color.rgb * saturate(LdotN);
 
 				// Calculate specular reflections
-				float Ks = 0.01;
+				float Ks = 1;
 				float specN = 1; // Values>>1 give tighter highlights
 				float3 V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 				// Using classic reflection calculation:
@@ -114,7 +131,7 @@ Shader "Unlit/PhongShader"
 				float3 spe = fAtt * _PointLightColor.rgb * Ks * pow(saturate(dot(interpNormal, H)), specN);
 
 				// Combine Phong illumination model components
-				float4 returnColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+				float4 returnColor = (0.0f, 0.0f, 0.0f, 0.0f);
 				returnColor.rgb = amb.rgb + dif.rgb + spe.rgb;
 				returnColor.a = v.color.a;
 				return returnColor;
