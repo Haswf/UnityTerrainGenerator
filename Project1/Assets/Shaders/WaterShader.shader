@@ -33,16 +33,23 @@ Shader "Unlit/WaterShader"
         //_Color("Water Colour", float4) = (0, 191, 255, 1)
 	}
 	SubShader
-	{
+	{   
+        Tags {"Queue" = "Transparent"}
+
 		Pass
-		{
+		{   //Tags { "Queue" = "AlphaTest" "RenderType"="Opaque" }
+            ZWrite Off
+            
+            Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 
 			#include "UnityCG.cginc"
-
-			uniform float3 _PointLightColor;
+            
+            
+			
+            uniform float3 _PointLightColor;
 			uniform float3 _PointLightPosition;
             uniform float4 _Color;
             
