@@ -50,7 +50,7 @@ public class MeshGenerator : MonoBehaviour
             for (int x = 0; x < size; x++)
             {
                 vertices[i] = new Vector3(x, 0, z);
-                colorMap[i] = Color.blue;
+                colorMap[i] = Color.cyan;
                 i++;
             }
         }
