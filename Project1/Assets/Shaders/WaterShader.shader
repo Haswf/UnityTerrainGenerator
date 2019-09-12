@@ -1,4 +1,4 @@
-﻿// Original Cg/HLSL code stub copyright (c) 2010-2012 SharpDX - Alexandre Mutel
+// Original Cg/HLSL code stub copyright (c) 2010-2012 SharpDX - Alexandre Mutel
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,14 +33,16 @@ Shader "Unlit/WaterShader"
         //_Color("Water Colour", float4) = (0, 191, 255, 1)
 	}
 	SubShader
-	{   
-        Tags {"Queue" = "Transparent"}
+	{   //Tags{  "Queue"="Transparent" ,"RenderType" = "Transparent" }
+        Tags {
+            "RenderType"="Opaque"
+        }
+        LOD 100
+        //Tags {"Queue" = "Transparent"}
 
 		Pass
 		{   //Tags { "Queue" = "AlphaTest" "RenderType"="Opaque" }
-            ZWrite Off
-            
-            Blend SrcAlpha OneMinusSrcAlpha
+          
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -60,6 +62,7 @@ Shader "Unlit/WaterShader"
 				float4 normal : NORMAL;
 				float4 color : COLOR;
                 float2 uv : TEXCOORD0;
+                float2 uv2 : TEXCOORD1;
 			};
 
 			struct vertOut
@@ -79,26 +82,25 @@ Shader "Unlit/WaterShader"
 			{
 				vertOut o;
 
-				// Convert Vertex position and corresponding normal into world coords.
-				// Note that we have to multiply the normal by the transposed inverse of the world 
-				// transformation matrix (for cases where we have non-uniform scaling; we also don't
-				// care about the "fourth" dimension, because translations don't affect the normal) 
-				float4 worldVertex = mul(unity_ObjectToWorld, v.vertex);
-				float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));           
-
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
                 
-                v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
-                               
-                //float4 displacement = float4(0.0f, 10*random(v.uv)+sin(0.5*v.vertex[0]+ 2*_Time.y), 0.0f, 0.0f);
-                float4 displacement = float4(0.0f, sin(0.5*v.vertex[0]+ 2*_Time.y), 0.0f, 0.0f);
+
+                // v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
+                float offset = random(v.uv);
+                float4 displacement = float4(5*offset, sin(0.2*(v.vertex.x+ _Time.y)+offset*2), 0.0f, 0.0f);
+
+                // Convert Vertex position and corresponding normal into world coords.
+                // Note that we have to multiply the normal by the transposed inverse of the world 
+                // transformation matrix (for cases where we have non-uniform scaling; we also don't
+                // care about the "fourth" dimension, because translations don't affect the normal) 
+                v.normal.xyz = float3(1, -1/(cos(0.2*(v.vertex.x+ _Time.y)+offset*2)),v.normal.xyz.z);
                 v.vertex += displacement;
-                o.vertex = mul(UNITY_MATRIX_P, v.vertex);
-
-				//o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.color =v.color;
-               
-
+                o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+                                     
+                float4 worldVertex = mul(unity_ObjectToWorld, v.vertex);
+                float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));   
+                
+				o.color = v.color;
 				// Pass out the world vertex position and world normal to be interpolated
 				// in the fragment shader (and utilised)
 				o.worldVertex = worldVertex;
@@ -114,20 +116,20 @@ Shader "Unlit/WaterShader"
 				float3 interpNormal = normalize(v.worldNormal);
 
 				// Calculate ambient RGB intensities
-				float Ka = 2;
+				float Ka = 0.01;
 				float3 amb = v.color.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * Ka;
 
 				// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again
 				// (when calculating the reflected ray in our specular component)
-				float fAtt = 1;
-				float Kd = 1;
+				float fAtt = 0.5;
+				float Kd = 0.001;
 				float3 L = normalize(_PointLightPosition - v.worldVertex.xyz);
 				float LdotN = dot(L, interpNormal);
 				float3 dif = fAtt * _PointLightColor.rgb * Kd * v.color.rgb * saturate(LdotN);
 
 				// Calculate specular reflections
 				float Ks = 1;
-				float specN = 1; // Values>>1 give tighter highlights
+				float specN = 5; // Values>>1 give tighter highlights
 				float3 V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 				// Using classic reflection calculation:
 				//float3 R = normalize((2.0 * LdotN * interpNormal) - L);

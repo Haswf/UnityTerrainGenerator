@@ -9,6 +9,7 @@
           <e p="MeshGenerator.cs" t="Include" />
           <e p="PointLight.cs" t="Include" />
           <e p="SunMovement.cs" t="Include" />
+          <e p="TerrainGenerator.cs" t="Include" />
           <e p="UpdatePointLight.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
