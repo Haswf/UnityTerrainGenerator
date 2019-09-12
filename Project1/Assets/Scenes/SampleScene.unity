@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82df39bb5ea728243a5aedd45e5ce84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 10
   horizontalSpeed: 2
   verticalSpeed: 2
   terrain: {fileID: 1073619943}
@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 1001040687}
   - component: {fileID: 1001040692}
   - component: {fileID: 1001040691}
+  - component: {fileID: 1001040693}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -417,6 +418,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!114 &1001040693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001040686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b905eac3694414cbc9edaef698e626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SeaLevel: 0
 --- !u!1 &1073619943
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 50
-  smoothness: 1.1
+  smoothness: 1
   dimension: 8
   randomCornerHeight: 1
   regions:
