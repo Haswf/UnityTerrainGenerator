@@ -1,4 +1,4 @@
-﻿// Original Cg/HLSL code stub copyright (c) 2010-2012 SharpDX - Alexandre Mutel
+// Original Cg/HLSL code stub copyright (c) 2010-2012 SharpDX - Alexandre Mutel
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -84,7 +84,8 @@ Shader "Unlit/WaterShader"
 
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
                 
-               // v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
+
+                // v.vertex = mul(UNITY_MATRIX_MV, v.vertex);
                 float offset = random(v.uv);
                 float4 displacement = float4(5*offset, sin(0.2*(v.vertex.x+ _Time.y)+offset*2), 0.0f, 0.0f);
 
