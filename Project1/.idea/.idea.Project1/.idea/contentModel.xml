@@ -6,11 +6,12 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="FlyingVehicle.cs" t="Include" />
-          <e p="MeshGenerator.cs" t="Include" />
           <e p="PointLight.cs" t="Include" />
           <e p="SunMovement.cs" t="Include" />
           <e p="TerrainGenerator.cs" t="Include" />
+          <e p="UpdateHeight.cs" t="Include" />
           <e p="UpdatePointLight.cs" t="Include" />
+          <e p="WaterGenerator.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
           <e p="TerrainShader.shader" t="Include" />

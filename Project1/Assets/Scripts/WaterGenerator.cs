@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 
 
-public class MeshGenerator : MonoBehaviour
+public class WaterGenerator : MonoBehaviour
 {
     // Start is called before the first frame update
     private Mesh mesh;

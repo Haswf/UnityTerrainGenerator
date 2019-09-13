@@ -12,6 +12,7 @@ public class FlyingVehicle : MonoBehaviour
     public float verticalSpeed = 2.0f;
     // drag MeshGen to this GameObject
     public GameObject terrain;
+    public float SeaLevel;
     
     private float _yaw = 0.0f;
     private float _pitch = 0.0f;
@@ -52,9 +53,11 @@ public class FlyingVehicle : MonoBehaviour
             movement += Camera.main.transform.right * moveSpeed * Time.deltaTime;
         }
         // check x coordinate if within boundary
-        if ((transform.position.x + movement.x <= mesh.bounds.size.x && transform.position.x + movement.x >= 0) &&
+        if (transform.position.x + movement.x <= mesh.bounds.size.x - 5 && transform.position.x + movement.x >= 5 &&
             // check z coordinate if within boundary
-            (transform.position.z + movement.z <= mesh.bounds.size.z && transform.position.z + movement.z >= 0)) {
+            transform.position.z + movement.z <= mesh.bounds.size.z -5 && transform.position.z + movement.z >= 5 && 
+            transform.position.y + movement.y > SeaLevel + 5)
+        {
             // move camera
             transform.position += movement;
         }
@@ -62,10 +65,8 @@ public class FlyingVehicle : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-//        //print("First point that collided: " + col.contacts[0].point);
-//        //GetComponent<Camera>().transform.position = col.contacts[0].point + Vector3.up * 3;
-//        Rigidbody body = GetComponent<Rigidbody>();
-//        body.velocity = Vector3.zero;
-//        body.angularVelocity = Vector3.zero;
+        Rigidbody body = GetComponent<Rigidbody>();
+        body.velocity = Vector3.zero;
+        body.angularVelocity = Vector3.zero;
     }
 }

@@ -132,13 +132,13 @@ public class TerrainGenerator : MonoBehaviour
     void GenerateTerrain()
     {    
 
-        regions[0].height = minHeight + (maxHeight - minHeight) * 0.42f;
+        regions[0].height = minHeight + (maxHeight - minHeight) * 0.40f;
         // sand
         regions[1].height = minHeight + (maxHeight - minHeight) * 0.45f;
         // wood
         regions[2].height = minHeight + (maxHeight - minHeight) * 0.7f;
         // mountain
-        regions[3].height = minHeight + (maxHeight - minHeight) * 0.8f;
+        regions[3].height = minHeight + (maxHeight - minHeight) * 0.9f;
         // earth
         regions[4].height = minHeight + (maxHeight - minHeight);
         // snow
@@ -165,7 +165,9 @@ public class TerrainGenerator : MonoBehaviour
 
     void SetSeaLevel()
     {
-        GameObject.Find("Water").GetComponent<UpdateHeight>().SeaLevel = minHeight + (maxHeight - minHeight) * 0.4f;
+        float seaLevel = minHeight + (maxHeight - minHeight) * 0.4f;
+        GameObject.Find("Water").GetComponent<UpdateHeight>().SeaLevel = seaLevel;
+        GameObject.Find("Main Camera").GetComponent<FlyingVehicle>().SeaLevel = seaLevel;
     }
     // Set seed for random generator
     public void SetSeed(int seed) {
