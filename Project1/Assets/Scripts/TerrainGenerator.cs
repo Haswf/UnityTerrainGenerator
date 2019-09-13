@@ -133,8 +133,8 @@ public class TerrainGenerator : MonoBehaviour
     {    
 
         regions[0].height = minHeight + (maxHeight - minHeight) * 0.40f;
-        // sand
-        regions[1].height = minHeight + (maxHeight - minHeight) * 0.45f;
+        // sand5
+        regions[1].height = minHeight + (maxHeight - minHeight) * 0.43f;
         // wood
         regions[2].height = minHeight + (maxHeight - minHeight) * 0.7f;
         // mountain

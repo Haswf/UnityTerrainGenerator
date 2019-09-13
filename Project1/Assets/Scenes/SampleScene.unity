@@ -466,17 +466,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633c5797421bc4143906c1f5c6324e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 50
+  range: 80
   smoothness: 1
   dimension: 8
   randomCornerHeight: 1
   regions:
   - name: Sea
     height: 10
-    colour: {r: 0.99574804, g: 1, b: 0, a: 0}
+    colour: {r: 0.73304504, g: 0.735849, b: 0.02082592, a: 0}
   - name: Sand
     height: 12
-    colour: {r: 1, g: 0.84843576, b: 0, a: 0}
+    colour: {r: 0.745283, g: 0.63344926, b: 0.014061932, a: 0}
   - name: Land
     height: 30
     colour: {r: 0.0461018, g: 0.39215687, b: 0.14983094, a: 0}
