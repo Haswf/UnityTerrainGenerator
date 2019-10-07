@@ -55,6 +55,14 @@ A simple procedural terrain generator based on Diamond Square algorithm in Unity
   via displacement of vertices within the plane. Ensure the plane has enough vertices for
   the effect to be sufficiently detailed.
 
+# Feedback
+
+Thank you for your submission, this is a good implementation with realistic generation of the terrain. There are some problems in the edge conditions of your DS as you are ignoring cases with 3 vertex. Also regarding the camera you dont have a correct mesh Collider so the camera cannot get close to the terrain, and generally the camera speed is quite slow. Unfortunately, there are also problems in the generation of the normals for the water shader. I like the details on the generated terrain. Good job! 
+
+
+
+Please be kindly advised that we have no plan to resolve these issues in near future. 
+
 ## Contributor
 
 [Haswf](https://github.com/Haswf)
