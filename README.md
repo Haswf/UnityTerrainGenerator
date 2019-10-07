@@ -57,11 +57,16 @@ A simple procedural terrain generator based on Diamond Square algorithm in Unity
 
 # Feedback
 
-Thank you for your submission, this is a good implementation with realistic generation of the terrain. There are some problems in the edge conditions of your DS as you are ignoring cases with 3 vertex. Also regarding the camera you dont have a correct mesh Collider so the camera cannot get close to the terrain, and generally the camera speed is quite slow. Unfortunately, there are also problems in the generation of the normals for the water shader. I like the details on the generated terrain. Good job! 
-
-
+> Thank you for your submission, this is a good implementation with realistic generation of the terrain. There are some problems in the edge conditions of your DS as you are ignoring cases with 3 vertex. Also regarding the camera you don't have a correct mesh Collider so the camera cannot get close to the terrain, and generally the camera speed is quite slow. Unfortunately, there are also problems in the generation of the normals for the water shader. I like the details on the generated terrain. Good job! 
 
 Please be kindly advised that we have no plan to resolve these issues in near future. 
+
+# Run
+
+1. Download or clone this repository.
+2. Import `COMP30019Project1/Project1` directory into Unity Hub.
+3. Open `Scenes/SampleScene.unity` in Unity Editor if it has been opened automatically.
+4. Click Play. You should see the generated terrain.
 
 ## Contributor
 
@@ -70,4 +75,6 @@ Please be kindly advised that we have no plan to resolve these issues in near fu
 [hanx7](https://github.com/hanx7)
 
 [tomtom99113](https://github.com/tomtom99113)
+
+
 
